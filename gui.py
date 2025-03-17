@@ -85,11 +85,6 @@ class App:
         self.practice_session_frame = tk.LabelFrame(self.event_frame, text="Event")
         self.practice_session_frame.grid(row=8, column=0, padx=0, pady=0)
 
-        # self.practice_checkbox = tk.Checkbutton(self.practice_session_frame, text="Practice disables", variable=self.practice_check_var,
-        #                                         command=lambda: self.disable_enable(
-        #                                             self.practice_session_frame))
-        # self.practice_checkbox.grid(row=0, column=0, padx=0, pady=0)
-
         tk.Label(self.practice_session_frame, text="Hour of Day").grid(row=1, column=0)
         self.practice_hourofday_spinbox = tk.Spinbox(self.practice_session_frame, from_=0, to=23,
                                                      )
@@ -122,12 +117,6 @@ class App:
         # Qualifying
         self.qualifying_session_frame = tk.LabelFrame(self.event_frame, text="Qualifying")
         self.qualifying_session_frame.grid(row=8, column=1, padx=0, pady=0)
-
-        # self.qualifying_checkbox = tk.Checkbutton(self.qualifying_session_frame, text="Qualifying disables",
-        #                                         variable=self.qualifying_check_var,
-        #                                         command=lambda: self.disable_enable(
-        #                                             self.qualifying_session_frame))
-        # self.qualifying_checkbox.grid(row=0, column=0, padx=0, pady=0)
 
         tk.Label(self.qualifying_session_frame, text="Hour of Day").grid(row=1, column=0)
         self.qualifying_hourofday_spinbox = tk.Spinbox(self.qualifying_session_frame, from_=0, to=23,
@@ -433,19 +422,9 @@ class App:
                                                                                            pady=10)
 
     def reset(self):
-        self.track_combobox.update()
-        print(self.cargroup_combobox.get())
+        pass
 
     def write(self):
-        # if self.practice_check_var.get() == 1:
-        #     self.read_write_event_json.delete("sessions", 0)
-        # elif self.practice_check_var.get() == 0:
-        #     self.read_write_event_json.write_json("hourOfDay", self.practice_hourofday_spinbox.get(),  0)
-        #     self.read_write_event_json.write_json("dayOfWeekend", self.practice_dayofweekend_spinbox.get(), 0)
-        #     self.read_write_event_json.write_json("timeMultiplier", self.practice_timemultiplier_spinbox.get(), 0)
-        #     self.read_write_event_json.write_json("sessionType", "sessionType")
-        #     self.read_write_event_json.write_json("sessionDurationMinutes", self.practice_sessiondurationminutes_spinbox.get(), 0)
-
         #####################################################################
         # Config file
         #####################################################################
@@ -529,22 +508,6 @@ class App:
         self.read_write_assistrules_json.write_json("disableAutoEngineStart", int(self.disableautoenginestart_spinbox.get()))
         self.read_write_assistrules_json.write_json("disableAutoWiper", int(self.disableautowiper_spinbox.get()))
         self.read_write_assistrules_json.write_json("disableAutoLights", int(self.disableautolights_spinbox.get()))
-
-        #####################################################################
-        # Config file
-        #####################################################################
-
-    # def disable_enable(self, frame):
-    #     print(self.practice_check_var.get())
-    #     if (self.practice_check_var.get() or self.qualifying_check_var.get()) == 1:
-    #         for child in frame.winfo_children():
-    #             if child.winfo_class() == 'Spinbox':
-    #                 child.config(state='disabled')
-    #     elif (self.practice_check_var.get() or self.qualifying_check_var.get()) == 0:
-    #         print("enable")
-    #         for child in frame.winfo_children():
-    #             if child.winfo_class() == 'Spinbox':
-    #                 child.config(state='normal')
 
     def start_program(self):
         os.startfile(variable.start_file)
