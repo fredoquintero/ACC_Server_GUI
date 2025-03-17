@@ -12,13 +12,8 @@ class RWJson:
     def write_json(self, key, value, index=""):
 
         try:
-            # if self.data["sessions"][index]["sessionType"] != "P":
-            #     store = {}
-            #     self.data["sessions"].insert(0, store)
-
             new_list_of_dict = self.data["sessions"][index]
             new_list_of_dict[key] = value
-            # print(self.data["sessions"])
         except:
             if value == "true":
                 self.data[key] = True
